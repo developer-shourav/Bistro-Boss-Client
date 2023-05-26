@@ -1,9 +1,16 @@
+import MenuItem from "../../Shared/MenuItem/MenuItem";
 
-const MenuCategory = () => {
+const MenuCategory = ({items}) => {
     return (
-        <div>
-            
-        </div>
+        <div className="grid grid-cols-2 mb-12 gap-10">
+                {
+                    items.map( item => <MenuItem
+                     key={item?._id}
+                     item={item}
+                     > 
+                    </MenuItem>)
+                }
+            </div>
     );
 };
 
