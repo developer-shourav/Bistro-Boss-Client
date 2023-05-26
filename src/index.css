@@ -1,3 +1,19 @@
+/* ------------Primacy Font------------ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+.title-font{
+    font-family: 'Cinzel', serif;
+}
+
+.title-shadow{
+    text-shadow: 1px 1px black;
+}
