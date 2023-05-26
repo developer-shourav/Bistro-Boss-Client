@@ -1,5 +1,7 @@
 .featured-item{
     background-image: url('../../../assets/home/featured.jpg');
+    background-color: #00000075;
+    background-blend-mode: overlay;
     background-attachment:fixed;
     background-position: center;
     background-size: cover;
