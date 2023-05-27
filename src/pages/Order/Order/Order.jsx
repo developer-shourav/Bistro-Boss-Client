@@ -4,6 +4,7 @@ import orderCover from "../../../assets/shop/order.jpg";
 import Cover from "../../Shared/Cover/Cover";
 import { useState } from "react";
 import useMenu from "../../../hooks/useMenu";
+import FoodCard from "../../../components/FoodCard/FoodCard";
 
 
 const Order = () => {
@@ -28,7 +29,18 @@ const Order = () => {
           <Tab>Dessert</Tab>
           <Tab>Drinks</Tab>
         </TabList>
-        <TabPanel>Salad Khaiben vai </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20 ">
+          {
+            salad.map( item => <FoodCard
+            key={item?._id}
+            item={item}
+            > 
+
+            </FoodCard>)
+          }
+          </div>
+        </TabPanel>
         <TabPanel>Pizza Khaiben vai</TabPanel>
         <TabPanel>Soup Khaiben vai</TabPanel>
         <TabPanel>Dessert Khaiben vai</TabPanel>
