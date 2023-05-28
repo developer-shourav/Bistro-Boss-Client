@@ -2,6 +2,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 import useMenu from '../../../hooks/useMenu';
+import { ScrollRestoration } from "react-router-dom";
 
 const PopularMenu = () => {
  
@@ -25,6 +26,7 @@ const PopularMenu = () => {
                 }
             </div>
             <button className="btn btn-outline block mx-auto  border-b-4  mt-4 ">View Full  Menu</button>
+            <ScrollRestoration/> 
         </div>
     );
 };

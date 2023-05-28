@@ -4,6 +4,7 @@ import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
 import Testimonials from "../Testimonials/Testimonials";
+import { ScrollRestoration } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -16,6 +17,8 @@ const Home = () => {
       <PopularMenu> </PopularMenu>
       <Featured> </Featured>
       <Testimonials> </Testimonials>
+
+      <ScrollRestoration/> 
     </div>
   );
 };

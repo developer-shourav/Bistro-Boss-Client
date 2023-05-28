@@ -8,6 +8,7 @@ import soupBG from '../../../assets/menu/soup-bg.jpg';
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
+import { ScrollRestoration } from "react-router-dom";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -47,6 +48,8 @@ const Menu = () => {
 
        {/* -------soup menu item-------- */}
        <MenuCategory items={soup} title={'soup'} coverImg={soupBG}> </MenuCategory>
+
+       <ScrollRestoration/> 
     </div>
   );
 };
