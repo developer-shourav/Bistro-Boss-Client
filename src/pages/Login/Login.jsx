@@ -3,6 +3,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProviders';
+import { Link } from 'react-router-dom';
 const Login = () => {
       
     const captchaRef = useRef(null);
@@ -97,6 +98,8 @@ const Login = () => {
             <div className="form-control mt-6">
               <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
             </div>
+
+            <p><small>New here ? <Link className='text-blue-600' to='/register'> Create an Account</Link></small></p>
           </form>
         </div>
 
@@ -107,6 +110,8 @@ const Login = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
+
+          
         </div>
       </div>
     </div>
