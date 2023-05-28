@@ -4,17 +4,14 @@ import NavBar from "../pages/Shared/NavBar/NavBar";
 
 const Main = () => {
     const location = useLocation();
-    const loginPath = location.pathname ;
+    const loginRegisterPath = location.pathname === '/login' || location.pathname ===   '/register' ;
     return (
         <div>
-            {
-                loginPath === '/login' ? <Outlet></Outlet> : loginPath === '/register' ? <Outlet></Outlet>  : <> <NavBar> </NavBar>
-                <Outlet> </Outlet>
-                <Footer> </Footer></>
-            }
+            { loginRegisterPath || <NavBar> </NavBar> }
+                         <Outlet> </Outlet>
+            { loginRegisterPath || <Footer> </Footer> }
         </div>
     );
 };
 
 export default Main;
-
