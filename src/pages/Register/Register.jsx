@@ -1,4 +1,18 @@
+import { useForm } from "react-hook-form";
+
+
+
 const Register = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const onSubmit = data => {
+
+        console.log(data)
+    };
+
+
+
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -11,7 +25,7 @@ const Register = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -20,6 +34,8 @@ const Register = () => {
                 type="text"
                 placeholder="Name"
                 className="input input-bordered"
+                name="name"
+                {...register('name')}
               />
             </div>
             <div className="form-control">
@@ -29,7 +45,9 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="email"
+                name="email"
                 className="input input-bordered"
+                {...register('email')}
               />
             </div>
             <div className="form-control">
@@ -37,9 +55,11 @@ const Register = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
+                name="password"
                 className="input input-bordered"
+                {...register('password')}
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -50,7 +70,7 @@ const Register = () => {
             <div className="form-control mt-6">
               <button className="btn btn-primary">Sign Up</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
