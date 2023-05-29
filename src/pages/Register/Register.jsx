@@ -35,8 +35,9 @@ const Register = () => {
                 placeholder="Name"
                 className="input input-bordered"
                 name="name"
-                {...register('name')}
+                {...register('name', {required:true})}
               />
+               {errors.name && <span className="text-red-500 text-sm"><small>Name  is required*</small></span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -47,8 +48,9 @@ const Register = () => {
                 placeholder="email"
                 name="email"
                 className="input input-bordered"
-                {...register('email')}
+                {...register('email', {required:true})}
               />
+              {errors.email && <span className="text-red-500 text-sm"><small>Email  is required*</small></span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -59,8 +61,9 @@ const Register = () => {
                 placeholder="password"
                 name="password"
                 className="input input-bordered"
-                {...register('password')}
+                {...register('password', {required:true})}
               />
+               {errors.password && <span className="text-red-500 text-sm"><small>Inter your password  correctly*</small></span>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
