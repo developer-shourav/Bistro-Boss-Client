@@ -5,7 +5,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 const Login = () => {
@@ -13,6 +13,9 @@ const Login = () => {
 
   const { emailPasswordLogin } = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate()
+  const redirectLocation = location?.state?.from?.pathname || '/';
+
   console.log(location);
 
   const handleLogin = (event) => {
@@ -32,12 +35,17 @@ const Login = () => {
           hideClass: {
             popup: 'animate__animated animate__fadeOutUp'
           }
+         
+   
+          
         })
         
       })
       .catch((error) => {
         console.log(error.message);
       });
+
+      navigate(redirectLocation) 
   };
 
   const handleValidateCaptcha = (e) => {
