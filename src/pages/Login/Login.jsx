@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 const Login = () => {
-  const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
 
   const { emailPasswordLogin } = useContext(AuthContext);
@@ -24,7 +23,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         Swal.fire({
-          title: 'Custom animation with Animate.css',
+          title: 'User Login successful',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
           },
@@ -39,8 +38,8 @@ const Login = () => {
       });
   };
 
-  const handleValidateCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
     console.log(user_captcha_value);
     if (validateCaptcha(user_captcha_value)) {
       setDisabled(false);
@@ -93,18 +92,14 @@ const Login = () => {
                   <LoadCanvasTemplate />
                 </label>
                 <input
+                  onBlur={handleValidateCaptcha}
                   type="text"
                   placeholder="The the captcha above"
                   className="input input-bordered"
                   name="captcha"
-                  ref={captchaRef}
+                 
                 />
-                <button
-                  onClick={handleValidateCaptcha}
-                  className="btn btn-outline btn-xs mt-3"
-                >
-                  Validate
-                </button>
+               
               </div>
               <div className="form-control mt-6">
                 <input
