@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -12,19 +14,37 @@ const Register = () => {
     reset,
   } = useForm();
 
+  const navigate = useNavigate();
 
   const {createEmailPasswordUser} = useContext(AuthContext);
   const onSubmit = (data) => {
     console.log(data);
     createEmailPasswordUser(data.email, data.password)
     .then( result => {
-      const loggedUser = result.user;
+      addExtraInfo(result.user, data.photo, data.name)
+      navigate('/')
     })
     .catch( error => {
       console.log(error.message);
     })
     reset();
   };
+
+  const addExtraInfo = (user, photo, name) => {
+    updateProfile(user, {displayName: name, photoURL:photo})
+    .then( ( ) => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Profile Creation successful',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+    .catch( error => {
+      console.log(error.message);
+    })
+  }
 
   return (
     <>
@@ -57,6 +77,24 @@ const Register = () => {
                 {errors.name && (
                   <span className="text-red-500 text-sm">
                     <small>Name is required*</small>
+                  </span>
+                )}
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your photo Url"
+                  className="input input-bordered"
+                  name="photo"
+                  {...register("photo", { required: true })}
+                />
+                {errors.photo && (
+                  <span className="text-red-500 text-sm">
+                    <small>Photo Url is required*</small>
                   </span>
                 )}
               </div>
