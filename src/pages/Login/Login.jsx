@@ -5,13 +5,15 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
 
   const { emailPasswordLogin } = useContext(AuthContext);
+  const location = useLocation();
+  console.log(location);
 
   const handleLogin = (event) => {
     event.preventDefault();

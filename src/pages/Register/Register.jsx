@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProviders";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -122,9 +123,7 @@ const Register = () => {
                 )}
 
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
+                 <p ><small>Already have an account ? <Link to='/login' className="text-blue-600"> Please login </Link></small></p>
                 </label>
               </div>
               <div className="form-control mt-6">
