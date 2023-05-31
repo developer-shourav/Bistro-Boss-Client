@@ -28,7 +28,7 @@ const NavBar = () => {
       <li><Link to='/secret'> Secret </Link></li>
       <li><Link to='/' className=" gap-2">
           <FaShoppingCart/>
-          <div className="badge badge-secondary">+99</div>
+          <div className="badge badge-secondary">+0</div>
          </Link>
       </li>
       
