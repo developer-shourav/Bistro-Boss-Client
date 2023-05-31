@@ -25,3 +25,19 @@ const FoodCard = ({item}) => {
 };
 
 export default FoodCard;
+
+/**
+ * --------------------------------------------------
+ *            API NAMING CONVENTION
+ * --------------------------------------------------
+ * users: userCollection
+ * 
+ * app.get('/users')
+ * app.get('/users/:id')
+ * app.post('/users')
+ * app.patch('/users/:id')
+ * app.put('/users/:id')
+ * app.delete('/users/:id')
+ * 
+ * 
+ * */
