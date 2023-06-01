@@ -9,6 +9,7 @@ const auth = getAuth(app);
 const AuthProviders = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [dataReloader, setDataReloader] = useState(false);
 
     const createEmailPasswordUser = (email, password) => {
         setLoading(true)
@@ -44,9 +45,11 @@ const AuthProviders = ({children}) => {
     const authInfo = {
         user,
         loading,
+        dataReloader,
         createEmailPasswordUser,
         emailPasswordLogin,
-        logOut
+        logOut,
+        setDataReloader
 
 
 

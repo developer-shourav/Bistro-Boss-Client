@@ -1,11 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import {FaShoppingCart} from 'react-icons/fa';
 
 const NavBar = () => {
-  const {user, logOut} = useContext(AuthContext);
-
+  const {user, logOut, dataReloader} = useContext(AuthContext);
+  const [cartItem, setCartItem] = useState([]);
 
   
   const handleLogOut = () => {
@@ -18,6 +18,11 @@ const NavBar = () => {
     })
   }
 
+  useEffect(() => {
+    fetch('http://localhost:7000/carts')
+    .then( res => res.json())
+    .then( data => setCartItem(data))
+  },[dataReloader])
 
   const navOptions = (
     <>
@@ -28,7 +33,7 @@ const NavBar = () => {
       <li><Link to='/secret'> Secret </Link></li>
       <li><Link to='/' className=" gap-2">
           <FaShoppingCart/>
-          <div className="badge badge-secondary">+0</div>
+          <div className="badge badge-secondary">+{cartItem ? <>{cartItem.length}</> : <>0</> }</div>
          </Link>
       </li>
       
