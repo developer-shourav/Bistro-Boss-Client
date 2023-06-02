@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import {FaShoppingCart} from 'react-icons/fa';
@@ -49,7 +49,7 @@ const NavBar = () => {
          </Link>
       </li> */}
 
-      <li><Link to='/' className=" gap-2">
+      <li><Link to='/dashboard/mycart' className=" gap-2">
           <FaShoppingCart/>
           <div className="badge badge-secondary">+{cart.length}</div>
          </Link>
