@@ -2,10 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import {FaShoppingCart} from 'react-icons/fa';
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
-  const {user, logOut, dataReloader} = useContext(AuthContext);
-  const [cartItem, setCartItem] = useState([]);
+  /* ------My Previous method before using React Query--------- */
+/*   const {user, logOut, dataReloader} = useContext(AuthContext);
+  const [cartItem, setCartItem] = useState([]); */
+
+/* ------------Using React Query---------------- */
+  const {user, logOut} = useContext(AuthContext);
+  const [cart] = useCart();
 
   
   const handleLogOut = () => {
@@ -18,11 +24,15 @@ const NavBar = () => {
     })
   }
 
-  useEffect(() => {
+  /* ------My Previous method before using React Query--------- */
+
+/*   useEffect(() => {
     fetch('http://localhost:7000/carts')
     .then( res => res.json())
     .then( data => setCartItem(data))
   },[dataReloader])
+ */
+
 
   const navOptions = (
     <>
@@ -31,9 +41,17 @@ const NavBar = () => {
       <li><Link to='/order/salad'> Order Food</Link></li>
       <li><Link to='/register'> Register </Link></li>
       <li><Link to='/secret'> Secret </Link></li>
-      <li><Link to='/' className=" gap-2">
+
+      {/* ------My Previous method before using React Query--------- */}
+ {/*      <li><Link to='/' className=" gap-2">
           <FaShoppingCart/>
           <div className="badge badge-secondary">+{cartItem ? <>{cartItem.length}</> : <>0</> }</div>
+         </Link>
+      </li> */}
+
+      <li><Link to='/' className=" gap-2">
+          <FaShoppingCart/>
+          <div className="badge badge-secondary">+{cart.length}</div>
          </Link>
       </li>
       

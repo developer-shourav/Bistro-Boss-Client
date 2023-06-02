@@ -2,12 +2,18 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const FoodCard = ({item}) => {
   const {name, price, recipe,image} = item ;
-  const {user, dataReloader, setDataReloader} = useContext(AuthContext);
+  /* -------Function for without react query---------- */
+/*   const {user, dataReloader, setDataReloader} = useContext(AuthContext); */
+
+
+  const {user} = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [, refetch] = useCart();
 
 
   const handleAddToCart = foodItem => {
@@ -36,7 +42,11 @@ const FoodCard = ({item}) => {
             'success'
           )
 
-          setDataReloader(!dataReloader)
+         /* -------Function for without react query---------- */
+         /*  setDataReloader(!dataReloader) */
+
+         /* ---------React Query for refresh cart item--------- */
+         refetch();
         }
       })
     }
