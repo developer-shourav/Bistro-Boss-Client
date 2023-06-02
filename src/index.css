@@ -17,3 +17,10 @@ body{
 .title-shadow{
     text-shadow: 1px 1px black;
 }
+
+.drawer-side a{
+    background-color: transparent;
+}
+.drawer-side a.active{
+    color: white;
+}
