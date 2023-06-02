@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome } from "react-icons/fa";
 import {GrMenu} from 'react-icons/gr';
+import {MdLocalDining} from 'react-icons/md';
 
 const Dashboard = () => {
   return (
@@ -25,7 +26,7 @@ const Dashboard = () => {
 
         <li><NavLink to='/'><FaHome/>Home</NavLink></li>
         <li><NavLink to='/menu'><GrMenu/>  Our Menu</NavLink></li>
-      <li><NavLink to='/order/salad'> Order Food</NavLink></li>
+      <li><NavLink to='/order/salad'><MdLocalDining/> Order Food</NavLink></li>
 
         
       </ul>
