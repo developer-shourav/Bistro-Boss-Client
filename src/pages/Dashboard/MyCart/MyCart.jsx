@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/useCart";
+import { FaTrashAlt } from "react-icons/fa";
 
 const MyCart = () => {
   const [cart] = useCart();
@@ -37,37 +38,28 @@ const MyCart = () => {
 
 
             {
-                cart.map( (row, index) =>   <tr
-                 key={row._id}
+                cart.map( (item, index) =>   <tr
+                 key={item._id}
                 >
                     <td>
                       {index + 1}
                     </td>
                     <td>
-                      <div className="flex items-center space-x-3">
                         <div className="avatar">
                           <div className="mask mask-squircle w-12 h-12">
                             <img
-                              src={row.image}
+                              src={item.image}
                               alt="Food Item"
                             />
                           </div>
                         </div>
-                        <div>
-                          <div className="font-bold">{row.name}</div>
-                        </div>
-                      </div>
                     </td>
                     <td>
-                      Zemlak, Daniel and Leannon
-                      <br />
-                      <span className="badge badge-ghost badge-sm">
-                        Desktop Support Technician
-                      </span>
+                     {item.name}
                     </td>
-                    <td>Purple</td>
+                    <td className="text-end">$ {item.price}</td>
                     <td>
-                      <button className="btn btn-ghost btn-xs">details</button>
+                      <button className="btn btn-ghost  text-white  bg-red-600 hover:bg-red-700"><FaTrashAlt/></button>
                     </td>
                   </tr>)
             }
@@ -83,3 +75,4 @@ const MyCart = () => {
 };
 
 export default MyCart;
+  
