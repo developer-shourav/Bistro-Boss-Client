@@ -16,35 +16,52 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const {createEmailPasswordUser} = useContext(AuthContext);
+  const { createEmailPasswordUser } = useContext(AuthContext);
   const onSubmit = (data) => {
-    console.log(data);
     createEmailPasswordUser(data.email, data.password)
-    .then( result => {
-      addExtraInfo(result.user, data.photo, data.name)
-      navigate('/')
-    })
-    .catch( error => {
-      console.log(error.message);
-    })
-    reset();
+      .then((result) => {
+        addExtraInfo(result.user, data.photo, data.name);
+
+        const savedUser = {
+          name: data.name,
+          email: data.email,
+          image: data.photo,
+        };
+        
+        fetch("http://localhost:7000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Profile Creation successful",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const addExtraInfo = (user, photo, name) => {
-    updateProfile(user, {displayName: name, photoURL:photo})
-    .then( ( ) => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Profile Creation successful',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    })
-    .catch( error => {
-      console.log(error.message);
-    })
-  }
+    updateProfile(user, { displayName: name, photoURL: photo })
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <>
@@ -161,7 +178,15 @@ const Register = () => {
                 )}
 
                 <label className="label">
-                 <p ><small>Already have an account ? <Link to='/login' className="text-blue-600"> Please login </Link></small></p>
+                  <p>
+                    <small>
+                      Already have an account ?{" "}
+                      <Link to="/login" className="text-blue-600">
+                        {" "}
+                        Please login{" "}
+                      </Link>
+                    </small>
+                  </p>
                 </label>
               </div>
               <div className="form-control mt-6">
