@@ -40,13 +40,14 @@ const Login = () => {
    
           
         })
+        navigate(redirectLocation , {replace: true}) 
         
       })
       .catch((error) => {
         console.log(error.message);
       });
 
-      navigate(redirectLocation) 
+      
   };
 
   const handleValidateCaptcha = (e) => {

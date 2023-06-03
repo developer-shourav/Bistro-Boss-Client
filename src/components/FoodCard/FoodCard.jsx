@@ -20,7 +20,7 @@ const FoodCard = ({item}) => {
      const {_id, name, image, price} = foodItem;
      const cartItem = {
       menuItemId: _id,
-      email: user.email,
+      email: user?.email,
       name, 
       image,
       price
