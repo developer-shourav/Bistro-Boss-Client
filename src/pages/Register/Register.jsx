@@ -5,6 +5,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const {
@@ -196,6 +197,7 @@ const Register = () => {
                   value="Sign Up"
                 />
               </div>
+              <SocialLogin> </SocialLogin>
             </form>
           </div>
         </div>
