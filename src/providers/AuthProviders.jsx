@@ -41,7 +41,6 @@ const AuthProviders = ({children}) => {
     useEffect( () => {
         const unsubscribe = onAuthStateChanged( auth, currentUser => {
             setUser(currentUser)
-            console.log('Current user is ', currentUser);
 
             // Get and Set JWT
             if(currentUser){
@@ -73,7 +72,6 @@ const AuthProviders = ({children}) => {
         googleSignIn,
         logOut,
         setDataReloader
-
 
 
     }
